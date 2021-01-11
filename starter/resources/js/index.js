@@ -1,5 +1,6 @@
-let results = [];
-let i = 0;
+// Promenljive
+var results = [];
+var i = 0;
 
 function readAll() {
   // Selektori
@@ -17,10 +18,6 @@ function readAll() {
     var deleteBtn = document.createElement("button");
     deleteBtn.innerHTML = "Izbrisi";
 
-    // Dugme za brisanje rasporeda
-    var editBtn = document.createElement("button");
-    editBtn.innerHTML = "Promeni profesora";
-
     const buttonId = results[key].id;
     deleteBtn.onclick = function () {
       deleteValue(buttonId);
@@ -31,15 +28,18 @@ function readAll() {
 
     var r = results[key];
 
-    for (var key in r) {
+    Object.keys(r).forEach(function (key) {
+      const propertyName = key.charAt(0).toUpperCase() + key.slice(1);
       var value = document.createElement("p");
-      value.innerHTML = r[key];
+      value.innerHTML = propertyName + ": " + r[key];
 
-      raspored.appendChild(value); // raspored
-    }
+      if (propertyName.toLowerCase() !== "id") {
+        // Dodati sve elemente osim ID-a
+        raspored.appendChild(value);
+      }
+    });
 
     raspored.append(deleteBtn); // Dugme za brisanje
-    raspored.append(editBtn); // Dugme za brisanje
   }
 
   console.log("Rasporedi: ", results);
@@ -66,6 +66,15 @@ function handleValues(ev) {
   } else {
     results.push(formaValues);
   }
+
+  // Restartovati formu
+  ev.target.reset();
+
+  // Ispisati novi niz
+  console.log(
+    "Novi raspored je dodat, kliknite na Ispisi sve dodate rasporede da prikazete dodate rasporede",
+    results
+  );
 }
 
 // Izbrisi raspored
@@ -73,16 +82,19 @@ function deleteValue(id) {
   // Selektori
   var raspored = document.getElementById(`item-${id}`);
 
-  // Izbrisati iz niza
-  var izbrisiIzNiza = results.filter(function (item) {
-    return item.id !== id;
-  });
-  results = izbrisiIzNiza;
-
   function removePorudzbine() {
+    // Izbrisati element iz DOM-a
     raspored.remove();
+
+    // Izbrisati iz niza
+    var izbrisiIzNiza = results.filter(function (item) {
+      return item.id !== id;
+    });
+    results = izbrisiIzNiza;
+
+    // Ispisati novi niz
+    console.log("Rasporedi: ", results);
   }
 
-  console.log("Rasporedi: ", results);
   return removePorudzbine(); // Izbrisati raspored
 }
