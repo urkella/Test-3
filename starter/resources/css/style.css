@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(89, 95, 84);
+    text-shadow: 0.5px 0.8px rgb(65, 57, 57);
+}
+
+form{
+	max-width: 500px;
+	padding: 20px 12px 10px 20px;
+    font: 13px Arial, Helvetica, sans-serif;
+    background-image: url('../img/marko.jpeg');
+
+}
+input{
+	margin: 10px;
+}
+.item{
+	background-color: rgb(240, 220, 195);
+	padding: 14px;
+	border: 2px solid rgb(216, 203, 187);
+}
