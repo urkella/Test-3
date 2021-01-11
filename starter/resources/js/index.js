@@ -41,7 +41,7 @@ function readAll() {
     raspored.append(editBtn); // Dugme za brisanje
   }
 
-  console.log(results);
+  console.log("Rasporedi: ", results);
 }
 
 function handleValues(ev) {
@@ -70,11 +70,16 @@ function handleValues(ev) {
 function deleteValue(id) {
   // Selektori
   var raspored = document.getElementById(`item-${id}`);
+  var izbrisiIzNiza = results.filter(function (item, index) {
+    return String(index) !== id;
+  });
+
+  results = izbrisiIzNiza;
 
   function removePorudzbine() {
     raspored.remove();
   }
 
-  console.log(results);
+  console.log("Rasporedi: ", results);
   return removePorudzbine(); // Izbrisati raspored
 }
