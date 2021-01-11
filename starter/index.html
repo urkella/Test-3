@@ -10,8 +10,7 @@
 
 <body>
     <div class="form-style">
-        <form id="forma">
-
+        <form id="forma" onsubmit="return handleValues(event);">
             <span>Predmet:</span>
             <input type="text" name="predmet" id="predmet">
             <br>
@@ -19,35 +18,20 @@
             <input type="text" name="profesor" id="profesor">
             <br>
             <span>Datum: </span>
-            <input type="date">
+            <input type="date" name="datum" id="datum">
             <br>
             <span>Vreme: </span>
-            <input type="time">
+            <input type="time" name="vreme" id="vreme">
             <br>
             <span> </span><input type="submit" value="Dodaj" />
         </form>
+        <button onclick="return readAll()">Ispisi sve dodate rasporede</button>
     </div>
 
     <hr>
     <div id="item-container">
         <h3>Raspored:</h3>
         <hr>
-        <div class="item">
-            <p><span>Predmet:</span> Matematika</p>
-            <p><span>Profesor:</span> Jovana Jovanovic</p>
-            <p><span>Datum: </span> 21-Jan-2021</p>
-            <p><span>Vreme: </span> 10:30 h</p>
-            <p><button>Obrisi</button></p>
-            <p><button>Izmeni Profesora</button></p>
-        </div>
-        <div class="item">
-            <p><span>Predmet:</span> Engleski</p>
-            <p><span>Profesor:</span> Pera Peric</p>
-            <p><span>Datum: </span> 22-Jan-2021</p>
-            <p><span>Vreme: </span> 11:00 h</p>
-            <p><button>Obrisi</button></p>
-            <p><button>Izmeni Profesora</button></p>
-        </div>
     </div>
 
     <script src="./resources/js/index.js"></script>
