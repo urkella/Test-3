@@ -1,4 +1,5 @@
 let results = [];
+let i = 0;
 
 function readAll() {
   // Selektori
@@ -10,7 +11,7 @@ function readAll() {
     // Napraviti glavni kontejner od rasporeda
     var raspored = document.createElement("div");
     raspored.className = "item";
-    raspored.id = `item-${key}`;
+    raspored.id = `item-${results[key].id}`;
 
     // Dugme za brisanje rasporeda
     var deleteBtn = document.createElement("button");
@@ -20,7 +21,7 @@ function readAll() {
     var editBtn = document.createElement("button");
     editBtn.innerHTML = "Promeni profesora";
 
-    const buttonId = key;
+    const buttonId = results[key].id;
     deleteBtn.onclick = function () {
       deleteValue(buttonId);
     };
@@ -57,6 +58,7 @@ function handleValues(ev) {
     profesor: forma.get("profesor"),
     datum: forma.get("datum"),
     vreme: forma.get("vreme"),
+    id: i++,
   };
 
   if (results.length === 0) {
@@ -70,10 +72,11 @@ function handleValues(ev) {
 function deleteValue(id) {
   // Selektori
   var raspored = document.getElementById(`item-${id}`);
-  var izbrisiIzNiza = results.filter(function (item, index) {
-    return String(index) !== id;
-  });
 
+  // Izbrisati iz niza
+  var izbrisiIzNiza = results.filter(function (item) {
+    return item.id !== id;
+  });
   results = izbrisiIzNiza;
 
   function removePorudzbine() {
