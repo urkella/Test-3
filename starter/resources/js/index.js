@@ -7,16 +7,16 @@ function readAll() {
   dodajRaspored.innerHTML = "";
 
   for (key in results) {
-    // Napraviti glavni kontejner od porudzbine
+    // Napraviti glavni kontejner od rasporeda
     var raspored = document.createElement("div");
     raspored.className = "item";
     raspored.id = `item-${key}`;
 
-    // Dugme za brisanje porudzbine
+    // Dugme za brisanje rasporeda
     var deleteBtn = document.createElement("button");
     deleteBtn.innerHTML = "Izbrisi";
 
-    // Dugme za brisanje porudzbine
+    // Dugme za brisanje rasporeda
     var editBtn = document.createElement("button");
     editBtn.innerHTML = "Promeni profesora";
 
@@ -66,7 +66,7 @@ function handleValues(ev) {
   }
 }
 
-// Izbrisi porudzbinu
+// Izbrisi raspored
 function deleteValue(id) {
   // Selektori
   var raspored = document.getElementById(`item-${id}`);
@@ -76,5 +76,5 @@ function deleteValue(id) {
   }
 
   console.log(results);
-  return removePorudzbine(); // Izbrisati porudzbinu
+  return removePorudzbine(); // Izbrisati raspored
 }
